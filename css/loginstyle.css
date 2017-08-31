@@ -1,0 +1,106 @@
+body {
+	background: pink;   /*粉红色*/
+	padding:0;
+	margin:0;
+	font-family: "Microsoft YaHei", "微软雅黑", "Microsoft JhengHei", "华文宋体", STHeiti, verdana,arial, sans-serif;
+}
+li{
+	list-style-type: none;  /*CSS。li行的行首标记符  none:无标记; circle:标记是空心圆...   */
+	padding: 10px 0;        /*内补白(上右下左) Padding[ padding-top ] || [ padding-right ] || [ padding-bottom ] || [ padding-left ]*/
+}
+.form-horizontal {          /*form表单style*/
+	margin-top: 100px;      /*form表单距离top 100px*/
+	padding-top: 15px;      /*form表单整体内容 top内补白 15px*/
+    padding-bottom: 40px;
+    border-radius: 15px;    /*form表单 四边形 4个边角的 圆角弧度 */
+    text-align: center;     /*form表单内部整体文本 位置的偏移量*/
+    background: #fff;
+}
+.form-horizontal .heading { /*行内元素span 的style*/
+    display: block;         /*把行内元素span 转换为 块级元素*/
+    font-size: 28px;
+    font-weight: 700;       /*字体粗细：100～900、normal、bold*/
+    padding: 35px 0;
+    margin-bottom: 30px;
+    color:#269ABC;
+
+    border-bottom: 1px solid #f0f0f0;  /*行内元素span内text底部的 线条设置。深化：eg:*/
+  /*border-style:solid;
+    border-bottom:thick dotted #ff0000;*/
+}
+.form-horizontal .form-group { /*块元素div ： 用户名、密码、登陆button*/
+    padding: 0 40px;
+    margin: 0 0 25px 0;     /*外补白(上右下左) margin[ margin-top ] || [ margin-right ] || [ margin-bottom ] || [ margin-left ]*/
+    position: relative;
+}
+.form-horizontal .form-control {/*用户名、密码的<input>的"class"的style*/
+    background: #f0f0f0;
+    border: none;           /*border:none(设置无边框)是css代码而不是HTML代码,HTML中属性都是用"="而不是":"，css中一般是”：“。*/
+    border-radius: 20px;
+    box-shadow: none; /*亦可设置内阴影,eg:"5px 5px 5px 10px rgba(0, 0, 0, .6)"   http://www.css88.com/book/css/properties/border/box-shadow.htm*/
+    padding: 0 20px 0 45px;
+    height: 40px;
+    font-weight: 700;
+    transition: all 3s ease 0s;/*给jQuery取得、失去焦点变色补充 过渡延迟时间！： 阐明1. \all 表示元素的所有属性都产生过渡效果\转换过程的持续总时间\ease（逐渐变慢）默认值\指定一个动画开始执行的时间，即当改变元素属性值后多长时间开始执行该transition效果\ */
+    display: block; /*把行内元素input 转换为 块级元素 */
+    width: 100%;
+    color: #ADADAD;
+}
+
+.form-horizontal .li3 { /*"游客身份进入"登陆button的style*/
+    text-align: right;
+    font-size: 12px;
+    padding: 10px 0;
+}
+.li4 .submit {  /*"登录"button的style */
+    display: block;/*<li>这种块级元素为何还要 重复转化为块级元素?:(主要是 吧<li>中的行内元素<a>强制 转化为 块元素) 阐明2.*/
+    width: 100%;
+    padding: 7px 0;
+    border: 0 none; /*border:0 == border-width: 0;      border:none == border-style: none;  两者理论上都是一个效果，就是不显示边框，这样写是为了补全兼容性        */
+    color: #fff;
+    background-color: #269ABC;
+    cursor: pointer; /*cursor手型*/
+}
+.visitor{           /* 游客：设置超链接a在其链接地址已被访问过时的样式*/
+	font-size: 15px;
+	color: #269ABC;
+}
+.visitor:hover{     /徘徊、悬停：*设置元素在其鼠标悬停时的样式。*/
+	text-decoration: none;
+	color: #2A6496;
+}
+/*
+阐明1.
+transition ： [<'transition-property'> || <'transition-duration'> || <'transition-timing-function'> || <'transition-delay'> [, [<'transition-property'> || <'transition-duration'> || <'transition-timing-function'> || <'transition-delay'>]]*
+http://www.w3cplus.com/content/css3-transition
+一、transition-property: 语法：transition-property ： none | all | [ <IDENT> ] [ ',' <IDENT> ]*
+取值：
+none(没有属性改变)；all（所有属性改变）这个也是其默认值；indent（元素属性名）。
+当其值为none时，transition马上停止执行，
+当指定为all时，则元素产生任何属性值变化时都将执行transition效果，
+ident是可以指定元素的某一个属性值。其对应的类型如下：....
+二、transition-duration: 语法    transition-duration ： <time> [, <time>]*
+transition-duration是用来指定元素 转换过程的持续时间，取值：<time>为数值，单位为s（秒）或者ms(毫秒),可以作用于所有元素，包括:before和:after伪元素。其默认值是0，也就是变换时是即时的。
+三、transition-timing-function: 语法：
+transition-timing-function ： ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier(<number>, <number>, <number>, <number>) [, ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier(<number>, <number>, <number>, <number>)]*
+取值：transition-timing-function的值允许你根据时间的推进去改变属性值的变换速率，transition-timing-function有6个可能值：
+1、ease：（逐渐变慢）默认值，ease函数等同于贝塞尔曲线(0.25, 0.1, 0.25, 1.0).
+2、linear：（匀速），linear 函数等同于贝塞尔曲线(0.0, 0.0, 1.0, 1.0).
+3、ease-in：(加速)，ease-in 函数等同于贝塞尔曲线(0.42, 0, 1.0, 1.0).
+4、ease-out：（减速），ease-out 函数等同于贝塞尔曲线(0, 0, 0.58, 1.0).
+5、ease-in-out：（加速然后减速），ease-in-out 函数等同于贝塞尔曲线(0.42, 0, 0.58, 1.0)
+6、cubic-bezier：（该值允许你去自定义一个时间曲线）， 特定的cubic-bezier曲线。 (x1, y1, x2, y2)四个值特定于曲线上点P1和点P2。所有值需在[0, 1]区域内，否则无效。
+其是cubic-bezier为通过贝赛尔曲线来计算“转换”过程中的属性值，如下曲线所示，通过改变P1(x1, y1)和P2(x2, y2)的坐标可以改变整个过程的Output Percentage。初始默认值为default.
+四、transition-delay: 语法：transition-delay ： <time> [, <time>]*
+transition-delay是用来指定一个动画开始执行的时间，也就是说当改变元素属性值后多长时间开始执行transition效果，其取值：<time>为数值，单位为s（秒）或者ms(毫秒)，其使用和transition-duration极其相似，也可以作用于所有元素，包括:before和:after伪元素。 默认大小是"0"，也就是变换立即执行，没有延迟。
+
+阐明2.
+行内元素：自己的独立空间，它是依附于其他块级元素存在的，因此，对行内元素设置高度、宽度、内外边距等属性，都是无效的。
+块级元素：动占据一定矩形空间，可以通过设置高度、宽度、内外边距等属性，来调整的这个矩形的样子；
+    eg： 链接 a 元素，在默认情况下是是“行内元素”，因此对a元素设置高度、宽度等属性，都是无效的。
+    而比如div，p，li，img等默认情况下的display属性值就是“block”。所以对于链接a来说只能这样：display:block;强制将它改成块元素。
+
+行内元素设置width和height是无用的，上下边界和上下填充也是不行的。
+#div nav ul li 肯定是要设置高跟宽度的，所以A标签要加display:block，前提是#div nav ul li没有设置宽度和高度。如果设置了的话，A标签就不要加display:block了。
+*/
+

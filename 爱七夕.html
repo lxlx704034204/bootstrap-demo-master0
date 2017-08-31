@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>爱七夕，爱码云</title>
+    <style>
+        body {
+            -webkit-user-select: none;  /*谷歌浏览器*/
+            -moz-user-select: none;     /*火狐浏览器*/
+            -ms-user-select: none;      /*IE*/
+            user-select: none           /*1*/
+        }
+        #main{position:relative}                                                                    /*2.  id="main"最外层容器 定位！*/
+        #canvas{height:300px;display:block;margin:0 auto}                                           /*3 4*/
+        #txt {
+            position: absolute;
+            top: 120px;
+            width: 100%;
+            text-align: center; /*文本 位置的偏移量*/
+            font-size: 30px;
+            color: #f00;
+            opacity: 0;         /*使用浮点数指定对象的不透明度。值被约束在[0.0-1.0]范围内，如果超过了这个范围，其计算结果将截取到与之最相近的值。*/
+            cursor: default     /*用户代理基于当前上下文决定光标形状(就是鼠标移到相应的位置 鼠标形状为默认的游标状态（通常为一个箭头）)*/
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <canvas id="canvas"></canvas>
+    <div id="txt">码云</div>
+</div>
+<script>
+    eval(function(d, e, a, c, b, f) {
+        b = function(a) {
+            return (a < e ? "": b(parseInt(a / e))) + (35 < (a %= e) ? String.fromCharCode(a + 29) : a.toString(36))
+        };
+        if (!"".replace(/^/, String)) {
+            for (; a--;) f[b(a)] = c[a] || b(a);
+            c = [function(a) {
+                return f[a]
+            }];
+            b = function() {
+                return "\\w+"
+            };
+            a = 1
+        }
+        for (; a--;) c[a] && (d = d.replace(new RegExp("\\b" + b(a) + "\\b", "g"), c[a]));
+        return d
+    }
+        (   '6 X=[];6 r=4;6 b;6 i;6 h;6 o=1;6 g;6 j=H;6 m=9.z;6 7;6 c=0;W.E=8(){s();L(8(){6 a=A(8(){l(c<=1){c=c+0.G;e.n("P").R.S=c}T{k(a)}},15)},11)};8 s(){7=e.n("14").C("D");q=e.u.F-v;w=e.u.I-v;7.J=w;7.K=q;d()}8 d(){7.M="N";7.O=1;b=m;h=9.z/j*2;7.Q(x(b),y(b));i=0;g=A("p()",o)}8 p(){b+=h;7.U(x(b),y(b));i++;7.V();l(i>=j){k(g)}}8 x(t){B Y+r*(16*9.Z(9.10(t),3))}8 y(t){B 12-r*(13*9.f(t)-5*9.f(2*t)-2*9.f(3*t)-9.f(4*t))}',
+            62, 69,
+            "      var ctx function Math  radian opcity  document cos intervalId rd  num clearInterval if startRadian getElementById time  WINDOW_HEIGHT    documentElement 20 WINDOW_WIDTH   PI setInterval return getContext 2d onload clientHeight 05 360 clientWidth width heigh setTimeout strokeStyle red lineWidth txt moveTo style opacity else lineTo stroke window arr 150 pow sin 1500 70  canvas  "
+            .split(" "),
+            0, {}
+        )
+    );
+</script>
+</body>
+</html>
+<!--
+1. CSS之 user-select : http://www.css88.com/book/css/properties/user-interface/user-select.htm
+   默认值：text
+   适用于：除替换元素外的所有元素
+   取值：
+    none：文本不能被选择
+    text：可以选择文本
+    all：当所有内容作为一个整体时可以被选择。如果双击或者在上下文上点击子元素，那么被选择的部分将是以该子元素向上回溯的最高祖先元素。
+    element：可以选择文本，但选择范围受元素边界的约束
+
+2.  CSS之  position:relative
+static：对象遵循常规流。此时4个定位偏移属性不会被应用。
+relative：对象遵循常规流，并且参照自身在常规流中的位置通过top，right，bottom，left这4个定位偏移属性进行偏移时不会影响常规流中的任何元素。
+absolute：对象脱离常规流，此时偏移属性参照的是离自身最近的定位祖先元素，如果没有定位的祖先元素，则一直回溯到body元素。盒子的偏移位置不影响常规流中的任何元素，其margin不与其他任何margin折叠。
+fixed：与absolute一致，但偏移定位是以窗口为参考。当出现滚动条时，对象不会随着滚动。
+center：与absolute一致，但偏移定位是以定位祖先元素的中心点为参考。盒子在其包含容器垂直水平居中。（CSS3）
+page：与absolute一致。元素在分页媒体或者区域块内，元素的包含块始终是初始包含块，否则取决于每个absolute模式。（CSS3）
+sticky：对象在常态时遵循常规流。它就像是relative和fixed的合体，当在屏幕中时按常规流排版，当卷动到屏幕外时则表现如fixed。该属性的表现是现实中你见到的吸附效果。（CSS3）
+
+3. CSS之 布局  display:block       http://www.css88.com/book/css/properties/layout/display.htm
+    ...
+    block：指定对象为块元素。
+    list-item： 指定对象为列表项目。
+    inline-block：指定对象为内联块元素。（CSS2）
+    ...
+4. CSS之 属性 Properties 之 外补白(Margin)     margin：[ <length> | <percentage> | auto ]{1,4}
+auto：
+    水平（默认）书写模式下，margin-top/margin-bottom计算值为0，margin-left/margin-right取决于可用空间。详见：margin系列之keyword auto
+<length>：
+    用长度值来定义外补白。可以为负值
+<percentage>：
+    用百分比来定义外补白。水平（默认）书写模式下，参照其包含块 width 进行计算，其它情况参照 height ，可以为负值
+
+
+
+
+
+
+-->

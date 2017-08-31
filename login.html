@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+1. HTML 5 <link> media 属性 ： media 属性用于为不同的媒介类型规定不同的样式。    media="all"：适合所有设备。 http://www.w3school.com.cn/html5/att_link_media.asp
+2. type="text/css"：CSS样式的标记：表示的是浏览器的解释方式，如果不定义的话，有些CSS效果 浏览器解释得不一样。type->类型,这里是style的属性    text/css ->文本/css,即css文本     <style type="text/css"> </style>
+3. rel="stylesheet"： rel 属性规定当前文档与被链接文档之间的关系。    只有 rel 属性的 "stylesheet" 获得到了所有浏览器的支持。其他值只得到了部分地支持。
+-->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>手账菌:分享手账,记录点滴,寻找美好</title>
+		<link media="all" type="text/css" rel="stylesheet" href="bootstrap3.1.1/css/bootstrap.min.css"> <!--1 2 3 -->
+		<link media="all" type="text/css" rel="stylesheet" href="css/loginstyle.css">
+	</head>
+	<body>
+<!--bootstrap中 col-md-push-*和col-md-offset的区别？
+实现方式的区别：	col-md-offset-*，			是利用margin-left实现的，
+ 				col-md-push-*/col-md-pull-*	是利用相对定位实现的。
+效果区别1：		col-md-offset-*只能向右偏移，因为实现方式就是margin-left，
+				push/pull因为是相对定位，既可以左偏移也可以右偏移
+效果区别2：		如果一行的偏移量+实际的宽度综合超过12，col-md-offset会换行显示，也是因为margin，
+				push/pull只会一部分不可见（超出容器），因为是相对自身定位。
+总结：			从功能上来看，push和pull可以用来给元素换位置，比offset灵活。
+-->
+		<div class="container"><!--bootstrap中 .container 类用于固定宽度并支持响应式布局的容器；.container-fluid 类用于 100% 宽度，占据全部视口（viewport）的容器 -->
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3"> <!--栅格系统中的列是通过指定1到12的值来表示其跨越的范围。在boostrap中一行分为12列，所以要居中的话可以通过计算占据的列数和偏移：当前占据的宽度是6列,要居中就是左右各偏移（12-6）/2=3; 如果占据宽度为8，则是左右各偏移（12-8）/2=2；以此类推。-->
+					<form class="form-horizontal"><!--通过为表单添加 .form-horizontal 类，并联合使用 Bootstrap 预置的栅格类，可以将 label 标签和控件组水平并排布局。这样做将改变 .form-group 的行为，使其表现为栅格系统中的行（row），因此就无需再额外添加 .row 了。-->
+						<span class="heading">手账菌登录</span> <!--定义form内 行内元素span-->
+						<!--单独的表单控件会被自动赋予一些全局样式。所有设置了 .form-control 类的 <input>、<textarea> 和 <select> 元素都将被默认设置宽度属性为 width: 100%;。 将 label 元素和前面提到的控件包裹在 .form-group 中可以获得最好的排列。-->
+						<div class="form-group">				<!--定义        块元素div-->
+							<input name="username" type="text" class="form-control" id="username" value="请输入用户名" /><!--input 行内元素-->
+						</div>
+						<div class="form-group">
+							<input name="password" type="text" class="form-control" id="password" value="请输入密码" />
+						</div>
+						<div class="form-group">
+							<li class="li4">
+								<input class="submit" type="submit" id="btnSubmit" value="登录">
+							</li>
+							<li class="li3">
+								<a  class="visitor" href="index.html">游客身份进入</a>
+       						</li>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	<script src="js/jquery.min.js"></script>
+	<!--动态背景-->
+	<script src="js/jquery.gradientify.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("body").gradientify({	// jquery-gradientify是一款可以制作网页背景渐变色平滑过渡动画的jQuery插件
+				gradients: [
+					{ start: [49,76,172], stop: [242,159,191] },
+					{ start: [255,103,69], stop: [240,154,241] },
+					{ start: [33,229,241], stop: [235,236,117] }
+				]
+			});
+		});
+	</script>
+		
+	<!--登录验证-->
+    <script type="text/javascript"> 
+		$('#username').focus(function () { // on() bind() click()依据"id"属性, focus()依据"name"属性
+		    //focus将函数绑定到 focus 事件: 当元素获得焦点时，发生 focus 事件。当通过鼠标点击选中元素或通过 tab 键定位到元素时，该元素就会获得焦点。focus() 方法触发 focus 事件，或规定当发生 focus 事件时运行的函数。
+			$('#username').val(''); 
+		})
+        $('#username').focus(function () {
+            $('#username').css({'color':'#ADADAD'});
+        });
+		$('#username').blur(function () { 	//blur: 当元素失去焦点时触发 blur 事件
+			if ($('#username').val() =='') { 
+				$('#username').val('用户名不能为空'); 
+				$('#username').css({'color':'red'}); //想要调价color过渡延迟时间，需在CSS添加"transition:"属性
+			} 
+		})
+
+        $('#password').focus(function () {
+            $('#password').val('');
+        })
+        $('#password').focus(function () {
+            $('#password').css({'color':'#ADADAD'});
+        });
+		$('#password').blur(function () { 
+			if ($('#password').val() == '') { 
+				$('#password').val('密码不能为空'); 
+				$('#password').css({'color':'red'}); 
+			} 
+		})
+
+		$('#btnSubmit').click(function () { 
+			if ($('#username').val() == 'Zazzing' && $('#password').val() == '123456') { 
+				alert('登录成功！'); 
+				window.open('index.html');
+			}else {
+				alert('登录失败！'); 
+			}
+		}) 
+	</script> 	
+</html>
